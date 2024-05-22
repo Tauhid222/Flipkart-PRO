@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" href="products.css">
+
+
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
+    <script src="C:\Users\mk\flipkart data\flipkartdata.js"></script>
+    <script src="C:\Users\mk\flipkart data\homedecor.js"></script>
+    <script>
+
+
+        function completedata() {
+            displaydata("Men Clothing")
+            displaydata("Women Clothing")
+            displaydata("Kid Clothing")
+            displaydata("Footwear")
+            displaydata("Accessories")
+
+        }
+
+        const retrievedData = window.localStorage.getItem('productData');
+        const parsedData = JSON.parse(retrievedData);
+
+        function filterbycategory(ele) {
+            const filteredData = parsedData.data.filter(item => item.type === ele);
+            document.getElementById("container1").innerHTML = "",
+
+                filteredData.forEach(item => {
+
+                    const container = document.getElementById("container1")
+                    const tr = document.createElement("div")
+
+                    // const card = document.createElement("div");
+                    tr.className = "product-card";
+                    var id = item.id
+                    const tdimage = document.createElement("div")
+
+                    var image = document.createElement("img")
+                    image.src = item.image
+                    image.alt = item.title
+                    image.style.width = '100px'
+
+
+                    tdimage.appendChild(image)
+
+                    const tdTitle = document.createElement("div")
+                    const title = document.createElement("p")
+                    title.className = "title";
+                    title.innerHTML = item.title
+                    tdTitle.appendChild(title)
+
+                    const tdPrice = document.createElement("div")
+                    const price = document.createElement("p")
+                    price.className = "price";
+                    price.innerHTML = "₹" + item.price
+                    tdPrice.appendChild(price)
+
+                    tr.appendChild(tdimage)
+                    tr.appendChild(tdTitle)
+                    tr.appendChild(tdPrice)
+
+                    container.appendChild(tr)
+
+                })
+
+        };
+
+
+
+    </script>
+</head>
+
+<body onload="completedata()">
+    <nav>
+        <div class="logo">
+            <img src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/flipkart-plus_8d85f4.png"
+                width="75px" height="20px">
+            <p>
+                Explore
+                <span class="plus-color">plus</span>
+
+                <img src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/plus_aef861.png"
+                    width="10px" height="10px">
+            </p>
+        </div>
+        <div class="search">
+            <input type="text" placeholder="Search for Products,brands and more">
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+
+        </div>
+        <button class="loginbtn">Login</button>
+        <a href="#" class="Navlink">
+            <i class="fa-solid fa-store"></i>
+            Become a Seller</a>
+        <a href="#" class="Navlink"> More
+            <i class="fa-solid fa-angle-down"></i>
+        </a>
+        <a href="#" class="Navlink">
+            <i class="fa-sharp fa-solid fa-cart-shopping"></i>
+            Cart
+        </a>
+
+    </nav>
+
+    <section class="topproductNavbar">
+        <div class="topproductNavbar_Nav">
+            <img src="https://rukminim1.flixcart.com/fk-p-flap/80/80/image/898880c3805043b1.png?q=100">
+            <p>Grocery</p>
+        </div>
+        <div class="topproductNavbar_Nav">
+            <img src="https://rukminim1.flixcart.com/fk-p-flap/80/80/image/72ec95ea3c99ee60.png?q=100">
+            <p>Mobile</p>
+        </div>
+
+        <div class="topproductNavbar_Nav">
+            <img src="https://rukminim1.flixcart.com/fk-p-flap/80/80/image/eb336e40e5a1b6ec.png?q=100">
+            <p>Fashion </p>
+        </div>
+
+        <div class="topproductNavbar_Nav">
+            <img src="https://rukminim1.flixcart.com/fk-p-flap/80/80/image/0dac5f7442d7fd5f.png?q=100">
+            <p>Electronics</p>
+        </div>
+        <div class="topproductNavbar_Nav">
+            <img src="https://rukminim1.flixcart.com/fk-p-flap/80/80/image/d47b98754854d054.png?q=100">
+            <p>Furniture</p>
+        </div>
+
+        <div class="topproductNavbar_Nav">
+            <img src="https://rukminim1.flixcart.com/fk-p-flap/80/80/image/f4f8f26cdeb86ce4.png?q=100">
+            <p>Beauty</p>
+        </div>
+
+        <div class="topproductNavbar_Nav">
+            <img src="https://rukminim1.flixcart.com/fk-p-flap/80/80/image/7f42ba8e79833eaa.png?q=100">
+            <p>Travel</p>
+        </div>
+
+        <div class="topproductNavbar_Nav">
+            <img src=" https://rukminim1.flixcart.com/fk-p-flap/80/80/image/0dac5f7442d7fd5f.png?q=100">
+            <p>Electronics</p>
+        </div>
+        <div class="topproductNavbar_Nav">
+            <img src="https://rukminim1.flixcart.com/fk-p-flap/80/80/image/436cd6fc952ae1cb.png?q=100">
+            <p>TV and Appliances</p>
+        </div>
+
+    </section>
+    <h1>Faishon</h2>
+        <div class="databox">
+            <div class="leftside">
+                <!-- <div>
+                    <h2>Filter</h2>
+                </div> -->
+                <div class="categorytab">
+                    <br>
+                    
+                    <h4>Categories</h4>
+                    <button onclick="completedata()">ALL</button>
+                    <button onclick="filterbycategory('Men Clothing')">Men Clothing</button>
+                    <button onclick="filterbycategory('Women Clothing')">Women Clothing</button>
+                    <button onclick="filterbycategory('Kid Clothing')">Kid Clothing</button>
+                    <button onclick="filterbycategory('Footwear')">Footwear</button>
+                    <button onclick="filterbycategory('Accessories')">Accessories</button>
+
+                </div>
+            </div>
+            <div id="container" class="rightside">
+                <div id="container1">
+                    <h3>Men Clothing</h3><br>
+                </div>
+                <div id="container2">
+                    <h3>Women Clothing</h3><br>
+                </div>
+                <div id="container3">
+                    <h3>Kid Clothing</h3><br>
+                </div>
+                <div id="container4">
+                    <h3>Footwear</h3><br>
+                </div>
+                <div id="container4">
+                    <h3>Accessories</h3><br>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!------------------------------------footer section-------------------------------------------->
+
+        
+            <footer>
+                <div class="left-panel">
+                    <diV>
+                        <div class="footer-title">ABOUT</div>
+                        <div class="Style">
+                            <div>Contact Us</div>
+                            <div>About Us</div>
+                            <div>Careers</div>
+                            <div>Flipkart Stories</div>
+                            <div> Press</div>
+                            <div>Flipkart Wholesale</div>
+                            <div>Corporat Information</div>
+                        </div>
+
+                    </diV>
+                    <diV>
+                        <div class="footer-title">HELP</div>
+                        <div class="Style">
+                            <div>Payments</div>
+                            <div>Shipping</div>
+                            <div>Cancellation</div>
+                            <div>FAQ</div>
+                            <div>Report infrigement</div>
+                        </div>
+                    </diV>
+                    <diV>
+                        <div class="footer-title">CONSUMER POLICY</div>
+                        <div class="Style">
+                            <div>Return Policy</div>
+                            <div>Terms Of Use</div>
+                            <div>Securty</div>
+                            <div>Privacy</div>
+                            <div>Sitemap</div>
+                            <div>Greivance Redessal</div>
+                            <div>EPR Compliance</div>
+                        </div>
+                    </diV>
+                    <diV>
+                        <div class="footer-title">SOCIAL</div>
+                        <div class="Style">
+                            <div>Facebook</div>
+                            <div>Twitter</div>
+                            <div>YouTube</div>
+                        </div>
+
+                    </diV>
+
+                </div>
+                <div class="right-panel">
+                    <diV>
+                        <div class="footer-title">Mail Us:</div>
+                        <samp class="Style">
+                            Flipkart Internet Provate Limited,
+                            buildings Alyssa, Begonia &
+                            Clove Embassy Tech Village,
+                            Outer Ring Road, Devarabeesanahalli Village,
+                            Bengaluru, 560103,
+                            Karnataka, India
+                        </samp>
+                    </diV>
+                    <diV>
+                        <div class="footer-title">Registered Office Address</div>
+                        <samp class="Style">
+                            Flipkart Internet Private Limited,
+                            Buildings Alyssa, Begonia &
+                            Clove Embassy Tech Village,
+                            Outer Ring Road, Devarabeesanahalli Village,
+                            Bengaluru,560103,
+                            Karnataka, India
+                            CIN : U51109KA2012PTC066107
+                            Telephone: <span>044-45614700</span>
+                        </samp>
+
+                    </diV>
+
+                </div>
+
+            </footer>
+            <hr>
+            <div class="background"></div>
+
+            <div class="footer-section">
+                <div>Become a Seller</div>
+                <div>Advertise</div>
+                <div>Gift Cards</div>
+                <div>Help Center </div>
+                <div>2007-2023 Flipkart.com</div>
+            </div>
+
+
+                    <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+</body>
+
+</html>
